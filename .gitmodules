@@ -1,6 +1,0 @@
-[submodule "libs/nmGear"]
-	path = libs/nmGear
-	url = git://github.com/klaussantana/nmGear.git
-[submodule "libs/nmBrowscap"]
-	path = libs/nmBrowscap
-	url = git://github.com/klaussantana/nmBrowscap.git
