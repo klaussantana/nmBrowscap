@@ -137,7 +137,7 @@ class nmBrowscap extends nmGear
 		if ( (int)(static::Configuration()->UseCoreBrowscap) && ini_get('browscap') && function_exists('get_browser') && $Browser =get_browser($UserAgent, true) )
 		{
 			// Apenas para efeito de log
-			trigger_error(static::Language()->get_browser);
+			trigger_error('nmBrowscap: ' .static::Language()->get_browser);
 			
 			// Já associa e retorna os valores de get_browser()
 			static::$Browser = $Browser;
@@ -196,7 +196,7 @@ class nmBrowscap extends nmGear
 		static::$Browser['useragent'] = $UserAgent;
 		
 		// Apenas para efeito de log
-		trigger_error(static::Language()->nmBrowscap);
+		trigger_error('nmBrowscap: ' .static::Language()->nmBrowscap);
 		
 		// Retorna as propriedades do navegador encontrado
 		return static::$Browser;
@@ -271,7 +271,7 @@ class nmBrowscap extends nmGear
 		// As configurações do PHP não permitem o download
 		if ( !ini_get('allow_url_fopen') )
 		{
-			trigger_error(static::Language()->CantDownload);
+			trigger_error('nmBrowscap: ' .static::Language()->CantDownload);
 			return false;
 		}
 		
@@ -284,7 +284,7 @@ class nmBrowscap extends nmGear
 		// Ocorreu um erro no download.
 		if ( !strlen($RemoteFile) )
 		{
-			trigger_error(static::Language()->CantDownload);
+			trigger_error('nmBrowscap: ' .static::Language()->CantDownload);
 			return false;
 		}
 		
@@ -314,7 +314,7 @@ class nmBrowscap extends nmGear
 		// Testa a existência do arquivo temporário
 		if ( !$LocalFile || !is_file($LocalFile) || !is_readable($LocalFile) )
 		{
-			trigger_error(static::Language()->CantFind);
+			trigger_error('nmBrowscap: ' .static::Language()->CantFind);
 			return false;
 		}
 		
@@ -432,7 +432,7 @@ class nmBrowscap extends nmGear
 		if ( !$Parsed )
 		{
 			// Houve erro ao gravar o cache
-			trigger_error(static::Language()->ParseError);
+			trigger_error('nmBrowscap: ' .static::Language()->ParseError);
 			return false;
 		}
 		
@@ -520,8 +520,8 @@ class nmBrowscap extends nmGear
 		$LanguageXML .= '   <CantDownload>Não foi possível adquirir o arquivo `browscap.ini` do servidor remoto.</CantDownload>';
 		$LanguageXML .= '   <CantFind>Não foi possível localizar o arquivo `browscap.ini` no servidor local.</CantFind>';
 		$LanguageXML .= '   <ParseError>Não foi possível processar o arquivo `browscap.ini`.</ParseError>';
-		$LanguageXML .= '   <nmBrowscap>nmBrowscap: Detecção do navegador realizada pela biblioteca `nmBrowscap`.</nmBrowscap>';
-		$LanguageXML .= '   <get_browser>nmBrowscap: Detecção do navegador realizada pela função nativa `get_browser()`.</get_browser>';
+		$LanguageXML .= '   <nmBrowscap>Detecção do navegador realizada pela biblioteca `nmBrowscap`.</nmBrowscap>';
+		$LanguageXML .= '   <get_browser>Detecção do navegador realizada pela função nativa `get_browser()`.</get_browser>';
 		$LanguageXML .= '</Language>';
 		
 		$Languages['pt_br'] = new SimpleXMLElement($LanguageXML);
@@ -531,8 +531,8 @@ class nmBrowscap extends nmGear
 		$LanguageXML .= '   <CantDownload>Can not download the file `browscap.ini` from a remote server.</CantDownload>';
 		$LanguageXML .= '   <CantFind>Can not find the file `browscap.ini` in the local server.</CantFind>';
 		$LanguageXML .= '   <ParseError>Can not parse the file `browscap.ini`.</ParseError>';
-		$LanguageXML .= '   <nmBrowscap>nmBrowscap: Browser detected through the library `nmBrowscap`.</nmBrowscap>';
-		$LanguageXML .= '   <get_browser>nmBrowscap: Browser detected through the native function `get_browser()`.</get_browser>';
+		$LanguageXML .= '   <nmBrowscap>Browser detected through the library `nmBrowscap`.</nmBrowscap>';
+		$LanguageXML .= '   <get_browser>Browser detected through the native function `get_browser()`.</get_browser>';
 		$LanguageXML .= '</Language>';
 		
 		$Languages['en']    = 
